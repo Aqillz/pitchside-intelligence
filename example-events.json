@@ -1,0 +1,6 @@
+[
+  {"minute": 4, "side": "home", "type": "pass", "player": 8, "startX": 51, "startY": 39, "endX": 76, "endY": 48, "pressure": 0.3, "goal": false},
+  {"minute": 7, "side": "away", "type": "shot", "player": 11, "startX": 89, "startY": 56, "endX": 100, "endY": 51, "pressure": 0.5, "goal": false},
+  {"minute": 12, "side": "home", "type": "shot", "player": 9, "startX": 92, "startY": 47, "endX": 100, "endY": 49, "pressure": 0.2, "goal": true},
+  {"minute": 21, "side": "away", "type": "interception", "player": 4, "startX": 32, "startY": 55, "endX": 32, "endY": 55, "pressure": 0.62, "goal": false}
+]
