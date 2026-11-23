@@ -49,8 +49,12 @@ function renderFixture() {
 
 function renderScore(stats) {
   const complete = state.count === state.timeline.length;
-  get('score').replaceChildren(String(stats.home.goals), element('span', '·'), String(stats.away.goals));
-  get('score').setAttribute('aria-label', `${state.fixture.home.name} ${stats.home.goals}, ${state.fixture.away.name} ${stats.away.goals}`);
+  const home = String(stats.home.goals);
+  const away = String(stats.away.goals);
+  const score = get('score');
+  score.replaceChildren(home, element('span', '·'), away);
+  score.classList.toggle('compact', home.length + away.length > 4);
+  score.setAttribute('aria-label', `${state.fixture.home.name} ${home}, ${state.fixture.away.name} ${away}`);
   get('clock').textContent = stats.minute === 90 && complete ? 'FULL TIME' : `${stats.minute}′`;
   get('match-status').textContent = state.imported ? 'IMPORTED REPLAY' : 'SIMULATED REPLAY';
   get('event-count').textContent = `${state.count} / ${state.timeline.length} events`;
@@ -69,6 +73,7 @@ function renderMetrics(stats) {
     const away = stats.away[property].toFixed(digits);
     const metric = get(`metric-${id}`);
     metric.replaceChildren(home, element('span', '/', 'divider'), element('span', away, 'secondary'));
+    metric.classList.toggle('compact', home.length + away.length > 8);
     metric.setAttribute('aria-label', `${state.fixture.home.name} ${home}, ${state.fixture.away.name} ${away}`);
   }
 }
